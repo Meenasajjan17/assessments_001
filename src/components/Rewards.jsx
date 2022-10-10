@@ -191,7 +191,7 @@ const Rewards = () => {
       {/* Child 4 */}
       <div className='row mt-3'>
         <div className='col-6'>
-          <div className='d-flex justify-content-start'>
+          <div className='d-flex justify-content-between'>
             <h6 className='user-select-none'>
               {`Total Rewards Points: ${totalRewards.toLocaleString("en-US")}`}
             </h6>
