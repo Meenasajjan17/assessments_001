@@ -2,9 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Expected Output of the project can be seen in "./screenprints" folder
+## Expected Output of the project can be seen in "./screenprints" folder
 
-# Test Data can Be generated using c# module.
+## Test data can Be generated using c# module.
 
 File: ./src/api/sample_data_generation.txt  
 Step 01: Create a C# project
