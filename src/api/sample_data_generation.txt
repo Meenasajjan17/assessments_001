@@ -1,0 +1,59 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
+
+namespace GenerateData
+{
+    public class CustomerInfo
+    {
+        public string Id { get; set; }
+    }
+
+    public class TransactionInfo
+    {
+        public string TransactionId { get; set; }
+        public string CustomerId { get; set; }
+        public DateTime TransactionDate { get; set; }
+        public decimal TransactionAmount { get; set; }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            var random = new Random();
+            var transactions = new List<TransactionInfo>();
+            var startDate = DateTime.Parse("2022-07-01");
+            var customerRange = Enumerable.Range(1, 10).Select(c=> string.Concat("c-",c.ToString("D3"))).ToList();
+            var dateRange = Enumerable.Range(1, 87).Select(c=> startDate.AddDays(c).AddSeconds((random.NextDouble()*(86400-1800)+ 1800))).ToList();
+            var transactionRange = Enumerable.Range(1, 121).Select(c => string.Concat("t-", c.ToString("D3"))).ToList();
+            
+
+
+            foreach (var tran in transactionRange)
+            {
+                var custRandom = random.Next(0, customerRange.Count);
+                var dateRandom = random.Next(0, dateRange.Count);
+                var amount =( Math.Round((random.NextDouble() * (250.00d - 4.99d) + 4.99d), 2)).ToString("##.##");
+                transactions.Add( new TransactionInfo()
+                {
+                    TransactionId=tran,
+                    CustomerId = customerRange[custRandom],
+                    TransactionDate = dateRange[dateRandom],
+                    TransactionAmount = decimal.Parse(amount),
+                });
+            }
+
+            Console.WriteLine(transactions);
+            var options = new JsonSerializerOptions() {
+                WriteIndented = true,
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            };
+            string jsonString = JsonSerializer.Serialize(transactions, options);
+            Console.WriteLine(jsonString);
+            System.IO.File.WriteAllText("Transactions.json", jsonString);
+        }
+    }
+}
