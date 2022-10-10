@@ -190,8 +190,8 @@ const Rewards = () => {
       </div>
       {/* Child 4 */}
       <div className='row mt-3'>
-        <div className='col-5'>
-          <div className='d-flex justify-content-end me-2'>
+        <div className='col-6'>
+          <div className='d-flex justify-content-start'>
             <h6 className='user-select-none'>
               {`Total Rewards Points: ${totalRewards.toLocaleString("en-US")}`}
             </h6>
@@ -199,8 +199,8 @@ const Rewards = () => {
         </div>
         <div className='col-6'>
           {transactions && (
-            <div className='d-flex justify-content-end'>
-              <div className='me-5 user-select-none'>
+            <div className='d-flex'>
+              <div className='user-select-none ps-1 pe-4'>
                 <h6>
                   {`Total Amount Spent: 
                   ${transactionSummary[1].toLocaleString("en-US", {
@@ -209,7 +209,7 @@ const Rewards = () => {
                   })}`}
                 </h6>
               </div>
-              <div className='ms-2 me-2 user-select-none'>
+              <div className='user-select-none ml-auto'>
                 <h6>
                   {`Total Rewards Accumulated: 
                   ${transactionSummary[0].toLocaleString("en-US")}

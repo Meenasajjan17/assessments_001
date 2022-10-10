@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Header />
-      <div className='container-fluid'>
+      <div className='container'>
         <Rewards />
       </div>
       <Footer />
