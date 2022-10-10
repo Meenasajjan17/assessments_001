@@ -2,6 +2,18 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Expected Output of the project can be seen in "./screenprints" folder
+
+# Test Data can Be generated using c# module.
+
+File: ./src/api/sample_data_generation.txt  
+Step 01: Create a C# project
+Step 02: Replace the contents of Program.cs with the conents of sample_data_generation.txt
+Step 03: Modify Namepace if required.
+Step 04: Run it the Program (Ctr+F5 in Visual Studio Windows environment).
+Step 05: Go to Debug/Release folder find out Transactions.json.
+Step 06. Copy contents of Transactions.json and assin to "transactionInfo" (object array) in ./src/api/demboDb.js
+
 ## Available Scripts
 
 In the project directory, you can run:
