@@ -88,13 +88,16 @@ const Rewards = () => {
   };
 
   //Memoized function for expensive Rewards Points aggegation
-  // eslint-disable-next-line
-  const totalRewards = useMemo(() => aggregareRewards(), [rewardsSummary]);
+  const totalRewards = useMemo(
+    () => aggregareRewards(),
+    // eslint-disable-next-line
+    [rewardsSummary]
+  );
 
   //Memoized function for expensive Transaction Amount & Rewards Points aggegation
-  // eslint-disable-next-line
   const transactionSummary = useMemo(
     () => aggregateTransactions(),
+    // eslint-disable-next-line
     [transactions]
   );
 
@@ -192,7 +195,10 @@ const Rewards = () => {
       <div className='row mt-3'>
         <div className='col-6'>
           <div className='d-flex justify-content-between'>
-            <h6 className='user-select-none'>
+            <h6
+              className='user-select-none'
+              data-testid='total_rewards_summary'
+            >
               {`Total Rewards Points: ${totalRewards.toLocaleString("en-US")}`}
             </h6>
           </div>
@@ -201,7 +207,7 @@ const Rewards = () => {
           {transactions && (
             <div className='d-flex'>
               <div className='user-select-none ps-1 pe-4'>
-                <h6>
+                <h6 data-testid='tranaction_amount_smmary'>
                   {`Total Amount Spent: 
                   ${transactionSummary[1].toLocaleString("en-US", {
                     style: "currency",
@@ -210,7 +216,7 @@ const Rewards = () => {
                 </h6>
               </div>
               <div className='user-select-none ml-auto'>
-                <h6>
+                <h6 data-testid='transaction_reward_summary'>
                   {`Total Rewards Accumulated: 
                   ${transactionSummary[0].toLocaleString("en-US")}
                   `}
